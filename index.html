@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DP Solar Batala</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#ffffff;color:#222;}
+header{background:#b30000;color:white;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;}
+header img{height:50px;margin-right:10px;}
+header h1{font-size:18px;margin:0;}
+.menu-btn{font-size:26px;cursor:pointer;}
+nav{display:none;background:#ffffff;border-bottom:3px solid #ffd000;}
+nav a{display:block;padding:14px 20px;text-decoration:none;color:#b30000;font-weight:bold;border-bottom:1px solid #eee;}
+nav a:hover{background:#fff4f4;}
+section{background:#ffffff;margin:14px;padding:22px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.08);}
+h2{color:#b30000;margin-top:0;border-left:5px solid #ffd000;padding-left:10px;}
+button{background:#b30000;color:white;padding:10px 18px;border:none;border-radius:6px;font-size:15px;margin:5px;}
+footer{text-align:center;padding:16px;font-size:14px;color:#777;background:#f9f9f9;}
+.project-img, .video-section video, .product-img{width:100%;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,0.1);margin-bottom:10px;}
+.project-caption, .video-caption, .product-caption{text-align:center;font-weight:bold;color:#b30000;margin-bottom:20px;}
+.contact-buttons{text-align:center;margin-top:10px;}
+.contact-buttons a{display:inline-block;margin:5px;text-decoration:none;}
+
+/* ===== PRODUCTS ===== */
+.product-card{
+  margin-bottom:20px;
+  text-align:center;
+}
+</style>
+
+<script>
+function toggleMenu(){
+  var m=document.getElementById("menu");
+  m.style.display=(m.style.display==="block")?"none":"block";
+}
+</script>
+</head>
+
+<body>
+
+<header>
+  <div style="display:flex; align-items:center;">
+    <img src="logo.jpg" alt="DP Solar Logo">
+    <h1>DP Solar, Batala</h1>
+  </div>
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+</header>
+
+<nav id="menu">
+  <a href="#about">About Us</a>
+  <a href="#products">Products</a>
+  <a href="#projects">Projects</a>
+  <a href="#videos">Videos</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="about">
+  <h2>About Us</h2>
+  <p>DP Solar is a trusted solar solutions provider in Batala. Very good, very nice, top-quality work — the baangs of Batala.</p>
+</section>
+
+<!-- PRODUCTS SECTION -->
+<section id="products">
+  <h2>Our Products</h2>
+  <div class="product-card">
+    <img src="heatpump.jpg" alt="Heat Pump" class="product-img">
+    <p class="product-caption">Heat Pump</p>
+  </div>
+  <div class="product-card">
+    <img src="solarsystem.jpg" alt="Solar System" class="product-img">
+    <p class="product-caption">Solar System</p>
+  </div>
+  <div class="product-card">
+    <img src="solarlight.jpg" alt="Solar Light" class="product-img">
+    <p class="product-caption">Solar Light</p>
+  </div>
+  <div class="product-card">
+    <img src="solarvisor.jpg" alt="Solar Visor" class="product-img">
+    <p class="product-caption">Solar Visor</p>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2>Projects</h2>
+  <div>
+    <img src="gurdwara.jpg" alt="30 KW Gurdwara Dandamasaheb Dugri" class="project-img">
+    <p class="project-caption">30 KW Gurdwara Dandamasaheb Dugri</p>
+  </div>
+  <div>
+    <img src="ludhiana.jpg" alt="10 KW Project Ludhiana" class="project-img">
+    <p class="project-caption">10 KW Project Ludhiana Side</p>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos">
+  <h2>Videos</h2>
+  <div class="video-section">
+    <video controls>
+      <source src="video1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <p class="video-caption">Video - Customer Testimonial Mr. Singh, Batala</p>
+  </div>
+  <div class="video-section">
+    <video controls>
+      <source src="video2.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <p class="video-caption">Video - Customer Testimonial Mrs. Kaur, Ludhiana</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>📞 Phone: 6239842296 / 9779178049</p>
+  <p>📍 Shop No. 5, First Floor, King Plaza Market, Nia Circuit, Nia Rate, Phirum Thinima Road, Batala</p>
+  <p>📍 Shop No. 5, Gurnanak Market, Nia Jainmande, Dhandra Road, Ludhiana</p>
+
+  <div class="contact-buttons">
+    <a href="tel:6239842296"><button>Call 6239842296</button></a>
+    <a href="tel:9779178049"><button>Call 9779178049</button></a>
+    <a href="https://wa.me/916239842296" target="_blank"><button>WhatsApp 6239842296</button></a>
+    <a href="https://wa.me/919779178049" target="_blank"><button>WhatsApp 9779178049</button></a>
+  </div>
+</section>
+
+<footer>
+  © 2025 DP Solar, Batala
+</footer>
+
+</body>
+</html>
