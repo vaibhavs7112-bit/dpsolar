@@ -25,16 +25,10 @@ header{
   z-index:100;
 }
 
-/* Top bar */
 .header-top{
   display:flex;
   justify-content:space-between;
   align-items:center;
-}
-
-.header-top .brand{
-  font-size:22px;
-  font-weight:bold;
 }
 
 .menu-btn{
@@ -42,7 +36,6 @@ header{
   cursor:pointer;
 }
 
-/* Center header */
 .header-center{
   text-align:center;
   margin-top:10px;
@@ -87,8 +80,8 @@ nav a:hover{
 /* ================= SECTIONS ================= */
 section{
   background:#ffffff;
-  margin:30px auto;
-  padding:40px 22px;
+  margin:40px auto;
+  padding:45px 25px;
   max-width:1100px;
   border-radius:10px;
   box-shadow:0 4px 12px rgba(0,0,0,0.08);
@@ -106,6 +99,7 @@ h2{
   position:relative;
   overflow:hidden;
   margin-top:25px;
+  padding:0 40px; /* space for arrows */
 }
 
 .slider-track{
@@ -121,6 +115,8 @@ h2{
 
 .slide img{
   width:100%;
+  max-height:360px;       /* prevents tall images like gurdwara */
+  object-fit:cover;      /* clean crop */
   border-radius:8px;
   box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
@@ -136,10 +132,15 @@ h2{
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  font-size:30px;
-  color:#b30000;
+  font-size:24px;
+  color:#8a0000;
   cursor:pointer;
   user-select:none;
+  opacity:0.75;
+}
+
+.arrow:hover{
+  opacity:1;
 }
 
 .arrow-left{left:10px;}
@@ -177,7 +178,7 @@ function toggleMenu(){
   m.style.display = (m.style.display==="block") ? "none" : "block";
 }
 
-/* Infinite manual slider – NO auto */
+/* Infinite manual slider */
 function initSlider(sliderId,leftId,rightId){
   const track=document.getElementById(sliderId).querySelector(".slider-track");
   const slides=track.children;
@@ -208,7 +209,7 @@ window.onload=()=>{
 <!-- ================= HEADER ================= -->
 <header>
   <div class="header-top">
-    <div class="brand">DP Solar</div>
+    <div></div>
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
   </div>
 
@@ -232,7 +233,7 @@ window.onload=()=>{
 <section id="about">
 <h2>About Us</h2>
 <p>
-Established in 2018 by Dr. Ravi Prakash Sharma, DP Solar has become a trusted and professional solar solutions provider. With over 7 years of experience, we specialize in residential, commercial, and industrial solar projects. Our expertise includes system design, installation, and long-term support. We focus on delivering reliable, energy-efficient, and cost-effective solutions. Quality workmanship and customer satisfaction are our core values. We use high-performance solar technology to ensure durability and efficiency. DP Solar is committed to promoting sustainable and eco-friendly energy solutions. Our professional approach and timely project execution set us apart in the solar industry.
+Established in 2018 by Dr. Ravi Prakash Sharma, DP Solar has emerged as a trusted solar energy solutions provider. With over seven years of experience, we specialize in residential, commercial, and industrial solar projects. Our expertise covers system design, installation, and long-term support. We focus on delivering reliable, efficient, and cost-effective solar solutions. Quality workmanship and customer satisfaction remain our core values. DP Solar is committed to promoting sustainable and eco-friendly energy solutions through professional execution and timely project delivery.
 </p>
 </section>
 
@@ -256,7 +257,7 @@ Established in 2018 by Dr. Ravi Prakash Sharma, DP Solar has become a trusted an
 <h2>Projects</h2>
 <div class="slider" id="project-slider">
   <div class="slider-track">
-    <div class="slide"><img src="gurdwara.jpg"><p>30 KW – Gurdwara Dandamasaheb, Dugri</p></div>
+    <div class="slide"><img src="gurdwara.jpg"><p>30 KW – Gurdwara DamDama Sahib, Dugri</p></div>
     <div class="slide"><img src="ludhiana.jpg"><p>10 KW – Ludhiana</p></div>
   </div>
   <div class="arrow arrow-left" id="proj-left">&#10094;</div>
