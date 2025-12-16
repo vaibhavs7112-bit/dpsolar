@@ -6,27 +6,49 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+/* ==== GENERAL STYLES ==== */
 body{margin:0;font-family:Arial,sans-serif;background:#ffffff;color:#222;}
 header{background:#b30000;color:white;padding:16px 20px;display:flex;flex-direction:column;align-items:center;position:sticky;top:0;z-index:100;}
 header img{height:60px;margin-bottom:8px;}
 header h1{font-size:22px;margin:0;font-weight:bold;}
 header p.tagline{font-size:14px;margin:4px 0;color:#ffd000;font-style:italic;}
 
+/* MENU */
 .menu-btn{font-size:26px;cursor:pointer;margin-top:10px;}
 nav{display:none;background:#ffffff;border-bottom:3px solid #ffd000;}
 nav a{display:block;padding:14px 20px;text-decoration:none;color:#b30000;font-weight:bold;border-bottom:1px solid #eee;}
 nav a:hover{background:#fff4f4;}
 
+/* SECTION STYLES */
 section{background:#ffffff;margin:14px;padding:22px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.08);}
 h2{color:#b30000;margin-top:0;border-left:5px solid #ffd000;padding-left:10px;}
-.project-img, .product-img, .video-section video{width:100%;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,0.1);margin-bottom:10px;}
-.project-caption, .product-caption, .video-caption{text-align:center;font-weight:bold;color:#b30000;margin-bottom:20px;}
+
+/* SLIDER STYLES */
+.slider{position:relative;overflow:hidden;margin:20px 0;}
+.slider-track{display:flex;transition:transform 0.3s ease;}
+.slide{min-width:100%;box-sizing:border-box;padding:0 10px;text-align:center;}
+.slide img{width:100%;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,0.1);}
+.slide p{color:#b30000;font-weight:bold;margin-top:8px;}
+
+/* ARROWS */
+.arrow{position:absolute;top:50%;transform:translateY(-50%);font-size:26px;color:#b30000;cursor:pointer;user-select:none;}
+.arrow-left{left:10px;}
+.arrow-right{right:10px;}
+
+/* CONTACT */
 .contact-section{font-size:14px;color:#555;line-height:1.6;margin-top:10px;}
 .contact-section p{margin:4px 0;}
 .contact-section i{margin-right:6px;color:#b30000;}
 
-.product-card{text-align:center;margin-bottom:20px;}
+/* RESPONSIVE GRID FOR DESKTOP */
+@media(min-width:600px){
+  .slide{min-width:50%;}
+}
+@media(min-width:900px){
+  .slide{min-width:25%;}
+}
 
+/* FOOTER */
 footer{text-align:center;padding:16px;font-size:14px;color:#777;background:#f9f9f9;}
 </style>
 
@@ -35,6 +57,26 @@ function toggleMenu(){
   var m=document.getElementById("menu");
   m.style.display=(m.style.display==="block")?"none":"block";
 }
+
+/* SIMPLE SLIDER LOGIC */
+function initSlider(sliderId,leftId,rightId){
+  const slider=document.getElementById(sliderId).querySelector('.slider-track');
+  const left=document.getElementById(leftId);
+  const right=document.getElementById(rightId);
+  let index=0;
+
+  left.addEventListener('click',()=>{
+    if(index>0){index--;slider.style.transform=`translateX(-${index*100}%)`;}
+  });
+  right.addEventListener('click',()=>{
+    if(index<slider.children.length-1){index++;slider.style.transform=`translateX(-${index*100}%)`;}
+  });
+}
+
+window.addEventListener('load',()=>{
+  initSlider('product-slider','prod-left','prod-right');
+  initSlider('project-slider','proj-left','proj-right');
+});
 </script>
 </head>
 
@@ -63,37 +105,49 @@ function toggleMenu(){
   <p>DP Solar is a trusted solar solutions provider in Batala. Very good, very nice, top-quality work — the baangs of Batala.</p>
 </section>
 
-<!-- PRODUCTS -->
+<!-- PRODUCTS SLIDER -->
 <section id="products">
   <h2>Our Products</h2>
-  <div class="product-card">
-    <img src="heatpump.jpg" alt="Heat Pump" class="product-img">
-    <p class="product-caption">Heat Pump</p>
-  </div>
-  <div class="product-card">
-    <img src="solarsystem.jpg" alt="Solar System" class="product-img">
-    <p class="product-caption">Solar System</p>
-  </div>
-  <div class="product-card">
-    <img src="solarlight.jpg" alt="Solar Light" class="product-img">
-    <p class="product-caption">Solar Light</p>
-  </div>
-  <div class="product-card">
-    <img src="solargeyser.jpg" alt="Solar Geyser" class="product-img">
-    <p class="product-caption">Solar Geyser</p>
+  <div class="slider" id="product-slider">
+    <div class="slider-track">
+      <div class="slide">
+        <img src="heatpump.jpg" alt="Heat Pump">
+        <p>Heat Pump</p>
+      </div>
+      <div class="slide">
+        <img src="solarsystem.jpg" alt="Solar System">
+        <p>Solar System</p>
+      </div>
+      <div class="slide">
+        <img src="solarlight.jpg" alt="Solar Light">
+        <p>Solar Light</p>
+      </div>
+      <div class="slide">
+        <img src="solargeyser.jpg" alt="Solar Geyser">
+        <p>Solar Geyser</p>
+      </div>
+    </div>
+    <div class="arrow arrow-left" id="prod-left">&#10094;</div>
+    <div class="arrow arrow-right" id="prod-right">&#10095;</div>
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- PROJECTS SLIDER -->
 <section id="projects">
   <h2>Projects</h2>
-  <div>
-    <img src="gurdwara.jpg" alt="30 KW Gurdwara Dandamasaheb Dugri" class="project-img">
-    <p class="project-caption">30 KW Gurdwara Dandamasaheb Dugri</p>
-  </div>
-  <div>
-    <img src="ludhiana.jpg" alt="10 KW Project Ludhiana" class="project-img">
-    <p class="project-caption">10 KW Project at Ludhiana</p>
+  <div class="slider" id="project-slider">
+    <div class="slider-track">
+      <div class="slide">
+        <img src="gurdwara.jpg" alt="30 KW Gurdwara Dandamasaheb Dugri">
+        <p>30 KW Gurdwara Dandamasaheb Dugri</p>
+      </div>
+      <div class="slide">
+        <img src="ludhiana.jpg" alt="10 KW Project Ludhiana">
+        <p>10 KW Project at Ludhiana</p>
+      </div>
+    </div>
+    <div class="arrow arrow-left" id="proj-left">&#10094;</div>
+    <div class="arrow arrow-right" id="proj-right">&#10095;</div>
   </div>
 </section>
 
