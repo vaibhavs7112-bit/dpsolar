@@ -5,95 +5,221 @@
 <title>DP Solar</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Font Awesome for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-body{margin:0;font-family:Arial, sans-serif;background:#ffffff;color:#222;}
-header{background:#b30000;color:white;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
-header img{height:60px;}
-header h1{font-size:28px;margin:0;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight:bold;}
-header p.tagline{font-size:14px;margin:0;color:#ffd000;font-style:italic;}
-.menu-btn{font-size:26px;cursor:pointer;}
-nav{display:none;background:#ffffff;border-bottom:3px solid #ffd000;}
-nav a{display:block;padding:14px 20px;text-decoration:none;color:#b30000;font-weight:bold;border-bottom:1px solid #eee;}
-nav a:hover{background:#fff4f4;}
-section{background:#ffffff;margin:14px;padding:22px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.08);}
-h2{color:#b30000;margin-top:0;border-left:5px solid #ffd000;padding-left:10px;}
-.slider{position:relative;overflow:hidden;margin:20px 0;}
-.slider-track{display:flex;transition:transform 0.5s ease;}
-.slide{min-width:100%;box-sizing:border-box;padding:0 10px;text-align:center;}
-.slide img{width:100%;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,0.1);}
-.slide p{color:#b30000;font-weight:bold;margin-top:8px;}
-.arrow{position:absolute;top:50%;transform:translateY(-50%);font-size:26px;color:#b30000;cursor:pointer;user-select:none;}
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#ffffff;
+  color:#222;
+}
+
+/* ================= HEADER ================= */
+header{
+  background:#b30000;
+  color:white;
+  padding:14px 20px;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+/* Top bar */
+.header-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.header-top .brand{
+  font-size:22px;
+  font-weight:bold;
+}
+
+.menu-btn{
+  font-size:26px;
+  cursor:pointer;
+}
+
+/* Center header */
+.header-center{
+  text-align:center;
+  margin-top:10px;
+}
+
+.header-center img{
+  height:70px;
+}
+
+.header-center h1{
+  margin:6px 0 2px;
+  font-size:30px;
+}
+
+.header-center p{
+  margin:0;
+  font-size:14px;
+  color:#ffd000;
+  font-style:italic;
+}
+
+/* ================= MENU ================= */
+nav{
+  display:none;
+  background:#ffffff;
+  border-bottom:3px solid #ffd000;
+}
+
+nav a{
+  display:block;
+  padding:14px 20px;
+  text-decoration:none;
+  color:#b30000;
+  font-weight:bold;
+  border-bottom:1px solid #eee;
+}
+
+nav a:hover{
+  background:#fff4f4;
+}
+
+/* ================= SECTIONS ================= */
+section{
+  background:#ffffff;
+  margin:30px auto;
+  padding:40px 22px;
+  max-width:1100px;
+  border-radius:10px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+h2{
+  color:#b30000;
+  margin-top:0;
+  border-left:5px solid #ffd000;
+  padding-left:10px;
+}
+
+/* ================= SLIDER ================= */
+.slider{
+  position:relative;
+  overflow:hidden;
+  margin-top:25px;
+}
+
+.slider-track{
+  display:flex;
+  transition:transform 0.5s ease;
+}
+
+.slide{
+  min-width:100%;
+  text-align:center;
+  padding:0 10px;
+}
+
+.slide img{
+  width:100%;
+  border-radius:8px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.slide p{
+  margin-top:10px;
+  color:#b30000;
+  font-weight:bold;
+}
+
+/* arrows */
+.arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:30px;
+  color:#b30000;
+  cursor:pointer;
+  user-select:none;
+}
+
 .arrow-left{left:10px;}
 .arrow-right{right:10px;}
-.contact-section{font-size:14px;color:#555;line-height:1.6;margin-top:10px;}
-.contact-section p{margin:6px 0;}
-.contact-section i{margin-right:6px;color:#b30000;}
-@media(min-width:600px){.slide{min-width:50%;}}
-@media(min-width:900px){.slide{min-width:25%;}}
-footer{text-align:center;padding:16px;font-size:14px;color:#777;background:#f9f9f9;}
+
+/* ================= CONTACT ================= */
+.contact-section{
+  font-size:15px;
+  color:#555;
+  line-height:1.7;
+}
+
+.contact-section p{
+  margin:8px 0;
+}
+
+.contact-section i{
+  color:#b30000;
+  margin-right:8px;
+}
+
+/* ================= FOOTER ================= */
+footer{
+  text-align:center;
+  padding:20px;
+  font-size:14px;
+  color:#777;
+  background:#f9f9f9;
+}
 </style>
 
 <script>
 function toggleMenu(){
-  var m=document.getElementById("menu");
-  m.style.display=(m.style.display==="block")?"none":"block";
+  const m=document.getElementById("menu");
+  m.style.display = (m.style.display==="block") ? "none" : "block";
 }
 
-/* INFINITE SLIDER FUNCTION */
-function initInfiniteSlider(sliderId,leftId,rightId){
-  const slider=document.getElementById(sliderId).querySelector('.slider-track');
-  const slides=slider.children;
-  const left=document.getElementById(leftId);
-  const right=document.getElementById(rightId);
+/* Infinite manual slider – NO auto */
+function initSlider(sliderId,leftId,rightId){
+  const track=document.getElementById(sliderId).querySelector(".slider-track");
+  const slides=track.children;
   let index=0;
 
-  function updateSlider(){
-    slider.style.transform=`translateX(-${index*100}%)`;
-  }
-
-  left.addEventListener('click',()=>{
+  document.getElementById(leftId).onclick=()=>{
     index--;
     if(index<0) index=slides.length-1;
-    updateSlider();
-  });
+    track.style.transform=`translateX(-${index*100}%)`;
+  };
 
-  right.addEventListener('click',()=>{
+  document.getElementById(rightId).onclick=()=>{
     index++;
     if(index>=slides.length) index=0;
-    updateSlider();
-  });
-
-  // Optional: Auto-slide every 5 sec
-  setInterval(()=>{
-    index++;
-    if(index>=slides.length) index=0;
-    updateSlider();
-  },5000);
+    track.style.transform=`translateX(-${index*100}%)`;
+  };
 }
 
-window.addEventListener('load',()=>{
-  initInfiniteSlider('product-slider','prod-left','prod-right');
-  initInfiniteSlider('project-slider','proj-left','proj-right');
-});
+window.onload=()=>{
+  initSlider("product-slider","prod-left","prod-right");
+  initSlider("project-slider","proj-left","proj-right");
+};
 </script>
 </head>
 
 <body>
 
-<!-- HEADER -->
+<!-- ================= HEADER ================= -->
 <header>
-  <div style="display:flex;align-items:center;">
+  <div class="header-top">
+    <div class="brand">DP Solar</div>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  </div>
+
+  <div class="header-center">
     <img src="logo.jpg" alt="DP Solar Logo">
     <h1>DP Solar</h1>
+    <p>Powering Your Life with Solar Energy</p>
   </div>
-  <p class="tagline">“Powering Your Life with Solar Energy”</p>
-  <div class="menu-btn" onclick="toggleMenu()">☰</div>
 </header>
 
-<!-- NAVIGATION -->
+<!-- ================= NAV ================= -->
 <nav id="menu">
   <a href="#about">About Us</a>
   <a href="#products">Products</a>
@@ -102,65 +228,63 @@ window.addEventListener('load',()=>{
   <a href="#contact">Contact</a>
 </nav>
 
-<!-- ABOUT -->
+<!-- ================= ABOUT ================= -->
 <section id="about">
-  <h2>About Us</h2>
-  <p>Established in 2018 by Dr. Ravi Prakash Sharma, DP Solar has grown into a trusted name in solar solutions. With over 7 years of experience, we specialize in residential, commercial, and industrial solar systems. Our team ensures top-quality installation, maintenance, and support services. We provide high-efficiency solar panels, inverters, and accessories. Our goal is to deliver sustainable and cost-effective solutions. Customer satisfaction is our highest priority. We focus on innovative, eco-friendly energy solutions. Timely project completion and reliability define our services. Partner with DP Solar for professional, long-term solar energy solutions.</p>
+<h2>About Us</h2>
+<p>
+Established in 2018 by Dr. Ravi Prakash Sharma, DP Solar has become a trusted and professional solar solutions provider. With over 7 years of experience, we specialize in residential, commercial, and industrial solar projects. Our expertise includes system design, installation, and long-term support. We focus on delivering reliable, energy-efficient, and cost-effective solutions. Quality workmanship and customer satisfaction are our core values. We use high-performance solar technology to ensure durability and efficiency. DP Solar is committed to promoting sustainable and eco-friendly energy solutions. Our professional approach and timely project execution set us apart in the solar industry.
+</p>
 </section>
 
-<!-- PRODUCTS SLIDER -->
+<!-- ================= PRODUCTS ================= -->
 <section id="products">
-  <h2>Our Products</h2>
-  <div class="slider" id="product-slider">
-    <div class="slider-track">
-      <div class="slide"><img src="heatpump.jpg" alt="Heat Pump"><p>Heat Pump</p></div>
-      <div class="slide"><img src="solarsystem.jpg" alt="Solar System"><p>Solar System</p></div>
-      <div class="slide"><img src="solarlight.jpg" alt="Solar Light"><p>Solar Light</p></div>
-      <div class="slide"><img src="solargeyser.jpg" alt="Solar Geyser"><p>Solar Geyser</p></div>
-    </div>
-    <div class="arrow arrow-left" id="prod-left">&#10094;</div>
-    <div class="arrow arrow-right" id="prod-right">&#10095;</div>
+<h2>Our Products</h2>
+<div class="slider" id="product-slider">
+  <div class="slider-track">
+    <div class="slide"><img src="heatpump.jpg"><p>Heat Pump</p></div>
+    <div class="slide"><img src="solarsystem.jpg"><p>Solar System</p></div>
+    <div class="slide"><img src="solarlight.jpg"><p>Solar Lights</p></div>
+    <div class="slide"><img src="solargeyser.jpg"><p>Solar Geyser</p></div>
   </div>
+  <div class="arrow arrow-left" id="prod-left">&#10094;</div>
+  <div class="arrow arrow-right" id="prod-right">&#10095;</div>
+</div>
 </section>
 
-<!-- PROJECTS SLIDER -->
+<!-- ================= PROJECTS ================= -->
 <section id="projects">
-  <h2>Projects</h2>
-  <div class="slider" id="project-slider">
-    <div class="slider-track">
-      <div class="slide"><img src="gurdwara.jpg" alt="30 KW Gurdwara"><p>30 KW Gurdwara Dandamasaheb Dugri</p></div>
-      <div class="slide"><img src="ludhiana.jpg" alt="10 KW Project"><p>10 KW Project at Ludhiana</p></div>
-    </div>
-    <div class="arrow arrow-left" id="proj-left">&#10094;</div>
-    <div class="arrow arrow-right" id="proj-right">&#10095;</div>
+<h2>Projects</h2>
+<div class="slider" id="project-slider">
+  <div class="slider-track">
+    <div class="slide"><img src="gurdwara.jpg"><p>30 KW – Gurdwara Dandamasaheb, Dugri</p></div>
+    <div class="slide"><img src="ludhiana.jpg"><p>10 KW – Ludhiana</p></div>
   </div>
+  <div class="arrow arrow-left" id="proj-left">&#10094;</div>
+  <div class="arrow arrow-right" id="proj-right">&#10095;</div>
+</div>
 </section>
 
-<!-- VIDEOS -->
+<!-- ================= VIDEOS ================= -->
 <section id="videos">
-  <h2>Videos</h2>
-  <div class="video-section">
-    <video controls><source src="video1.mp4" type="video/mp4">Your browser does not support the video tag.</video>
-  </div>
-  <div class="video-section">
-    <video controls><source src="video2.mp4" type="video/mp4">Your browser does not support the video tag.</video>
-  </div>
+<h2>Videos</h2>
+<video controls width="100%"><source src="video1.mp4"></video><br><br>
+<video controls width="100%"><source src="video2.mp4"></video>
 </section>
 
-<!-- CONTACT -->
+<!-- ================= CONTACT ================= -->
 <section id="contact">
-  <h2>Contact Us</h2>
-  <p><strong>To book a free consultation contact the given mobile numbers below.</strong></p>
-  <div class="contact-section">
-    <p><i class="fas fa-home"></i>HO: Shop No. 5, 1st Floor, King Plaza Market, near Redpeck Showroom, Sinma Road, Batala</p>
-    <p><i class="fas fa-home"></i>BO: Shop No. 8, Guru Nanak Market, near Jain Mandir, Dhandra Road, Ludhiana</p>
-    <p><i class="fas fa-phone"></i>Contact: 6239842296</p>
-    <p><i class="fas fa-phone"></i>Contact: 9779178049</p>
-  </div>
+<h2>Contact Us</h2>
+<p><strong>To book a free consultation, contact the given mobile numbers below.</strong></p>
+<div class="contact-section">
+  <p><i class="fas fa-home"></i>HO: Shop No. 5, 1st Floor, King Plaza Market, near Redpeck Showroom, Sinma Road, Batala</p>
+  <p><i class="fas fa-home"></i>BO: Shop No. 8, Guru Nanak Market, near Jain Mandir, Dhandra Road, Ludhiana</p>
+  <p><i class="fas fa-phone"></i>6239842296</p>
+  <p><i class="fas fa-phone"></i>9779178049</p>
+</div>
 </section>
 
 <footer>
-  © 2025 DP Solar
+© 2025 DP Solar
 </footer>
 
 </body>
